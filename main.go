@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/everfore/exc/walkexc/pkg"
@@ -83,13 +82,7 @@ func (r *Root) Excute() {
 			// }(sub)
 			continue
 		}
-		fmt.Println(sub.cmd, sub.args)
 		r.CmdMap[sub.cmd].SetArgs(sub.args)
-		// if sub.cmd == pull.Command.Name() {
-		// 	pull.Command.SetArgs(sub.args)
-		// 	pull.Excute(sub.args)
-		// 	continue
-		// }
 		r.CmdMap[sub.cmd].Execute()
 	}
 }
