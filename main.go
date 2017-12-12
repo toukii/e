@@ -1,9 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/everfore/exc/walkexc/pkg"
+	"github.com/everfore/exc/walkexc/tpl"
 	"github.com/spf13/cobra"
 	pull "github.com/toukii/pull/pullCmd"
 )
@@ -23,9 +25,11 @@ func init() {
 	root.CmdMap[RootCommand.Name()] = RootCommand
 	root.CmdMap[pkg.Command.Name()] = pkg.Command
 	root.CmdMap[pull.Command.Name()] = pull.Command
+	root.CmdMap[tpl.Command.Name()] = tpl.Command
 
 	RootCommand.AddCommand(pkg.Command)
 	RootCommand.AddCommand(pull.Command)
+	RootCommand.AddCommand(tpl.Command)
 
 }
 
@@ -74,13 +78,14 @@ func (r *Root) Parse(args []string) {
 }
 
 func (r *Root) Excute() {
+	size := len(r.subs)
 	for _, sub := range r.subs {
 		if sub.cmd == RootCommand.Name() {
-			// defer func(sub *Sub) {
-			// 	r.CmdMap[sub.cmd].SetArgs(sub.args)
-			// 	r.CmdMap[sub.cmd].Execute()
-			// }(sub)
-			continue
+			if size == 1 {
+				r.CmdMap[sub.cmd].SetArgs(sub.args)
+			} else {
+				continue
+			}
 		}
 		r.CmdMap[sub.cmd].SetArgs(sub.args)
 		r.CmdMap[sub.cmd].Execute()
