@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/everfore/exc/walkexc/pkg"
+	"github.com/everfore/exc/walkexc/rep"
 	"github.com/everfore/exc/walkexc/tpl"
 	"github.com/spf13/cobra"
 	pull "github.com/toukii/pull/pullCmd"
@@ -26,11 +26,12 @@ func init() {
 	root.CmdMap[pkg.Command.Name()] = pkg.Command
 	root.CmdMap[pull.Command.Name()] = pull.Command
 	root.CmdMap[tpl.Command.Name()] = tpl.Command
+	root.CmdMap[rep.Command.Name()] = rep.Command
 
 	RootCommand.AddCommand(pkg.Command)
 	RootCommand.AddCommand(pull.Command)
 	RootCommand.AddCommand(tpl.Command)
-
+	RootCommand.AddCommand(rep.Command)
 }
 
 type Root struct {
