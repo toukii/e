@@ -7,7 +7,7 @@ import (
 	"github.com/everfore/exc/walkexc/rep"
 	"github.com/everfore/exc/walkexc/tpl"
 	"github.com/spf13/cobra"
-	pull "github.com/toukii/pull/pullCmd"
+	pull "github.com/toukii/pull/command"
 )
 
 var (
