@@ -8,6 +8,7 @@ import (
 	"github.com/everfore/exc/walkexc/tpl"
 	push "github.com/everfore/push/command"
 	"github.com/spf13/cobra"
+	ipdf "github.com/toukii/pdf2img/command"
 	pull "github.com/toukii/pull/command"
 )
 
@@ -29,12 +30,14 @@ func init() {
 	root.CmdMap[tpl.Command.Name()] = tpl.Command
 	root.CmdMap[rep.Command.Name()] = rep.Command
 	root.CmdMap[push.Command.Name()] = push.Command
+	root.CmdMap[ipdf.Command.Name()] = ipdf.Command
 
 	RootCommand.AddCommand(pkg.Command)
 	RootCommand.AddCommand(pull.Command)
 	RootCommand.AddCommand(tpl.Command)
 	RootCommand.AddCommand(rep.Command)
 	RootCommand.AddCommand(push.Command)
+	RootCommand.AddCommand(ipdf.Command)
 }
 
 type Root struct {
