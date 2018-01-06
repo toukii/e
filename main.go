@@ -8,7 +8,7 @@ import (
 	"github.com/everfore/exc/walkexc/tpl"
 	push "github.com/everfore/push/command"
 	"github.com/spf13/cobra"
-	ipdf "github.com/toukii/pdf2img/command"
+	"github.com/toukii/ipdf/command-ipdf"
 	pull "github.com/toukii/pull/command"
 )
 
